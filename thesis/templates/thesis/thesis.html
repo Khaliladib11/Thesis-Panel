@@ -1,0 +1,10 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <h1>{{ thesis.title }}</h1>
+    <h4>Student: {{ thesis.suid.suid.full_name }}</h4>
+    <h4>Supervisor: {{ thesis.stid.stid.full_name }}</h4>
+    <h4>Field: {{ thesis.fid.field_title }}</h4>
+    <p>{{ thesis.description }}</p>
+    <hr>
+{% endblock %}

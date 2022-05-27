@@ -59,10 +59,14 @@ class Field(models.Model):
 
 
 class Thesis(models.Model):
-    stid = models.OneToOneField('Student', unique=True, null=False, blank=False)
+    tid = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+    stid = models.OneToOneField('Student', unique=True, null=False, blank=False, on_delete=models.DO_NOTHING)
     suid = models.ForeignKey('Supervisor', null=False, blank=False, on_delete=models.DO_NOTHING)
     fid = models.ForeignKey('Field', null=False, blank=False, on_delete=models.DO_NOTHING)
 
     title = models.CharField(max_length=300, blank=False)
     description = models.TextField(max_length=1000, null=False, blank=False)
     created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return self.title

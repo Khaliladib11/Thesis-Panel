@@ -1,5 +1,9 @@
 {% extends 'main.html' %}
 
 {% block content %}
-    <h1>Hello from theses!!</h1>
+    {% for thesis in theses %}
+        <h1><a href="{% url 'thesis' thesis.tid %}">{{ thesis.title }}</a></h1>
+        <h3>{{ thesis.fid.field_title }}</h3>
+        <hr>
+    {% endfor %}
 {% endblock %}
